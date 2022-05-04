@@ -8,14 +8,13 @@ namespace TO_DO_Api.Controllers
     [Route("[controller]")]
     public class TodoListController : ControllerBase
     {
-        private readonly ILogger<TodoListController> _logger;
-
-        public TodoListController(ILogger<TodoListController> logger)
+        [HttpPut(Name ="Create")]
+        public void Create()
         {
-            _logger = logger;
+
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet(Name = "Get")]
         public IEnumerable<Item> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new Item
@@ -27,5 +26,17 @@ namespace TO_DO_Api.Controllers
             })
             .ToArray();
         }
+
+        [HttpDelete(Name = "Delete")]
+        public void Delete(ushort Id)
+        {
+            CommDB.Instance.Delete(Id);
+        }
+
+        [HttpGet("{day_forward}")]
+        public void fgm() { }
+
+        [HttpOptions]
+        public void Update() { }
     }
 }

@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using TO_DO_Api;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var movieApiKey = builder.Configuration["ConnectionStrings:TD"];
+CommDB commDB = new CommDB(movieApiKey);
 
 // Add services to the container.
 
